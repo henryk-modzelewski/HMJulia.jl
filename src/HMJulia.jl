@@ -7,7 +7,7 @@ using InteractiveUtils
 ## notebooks ###############################################
 export hm_notebook
 notebooks = joinpath(ENV["HOME"],"Projects/Julia/Notebooks")
-function hm_mynotebook()
+function hm_notebook()
     notebook(dir=joinpath(ENV["HOME"],notebooks))
 end
 function hm_notebook(subdir::String)
