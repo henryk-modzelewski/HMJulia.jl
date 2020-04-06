@@ -8,14 +8,30 @@ using InteractiveUtils
 ## notebooks ###############################################
 export hm_update_Julia
 function hm_update_Julia()
+    println("1st resolve ...")
+
     try
         Pkg.resolve()
     catch
         @warn "First resolve failed"
     end
+    println("... done")
+
+    println("1st update ...")
     Pkg.update()
+    println("... done")
+
+    println("2nd resolve ...")
     Pkg.resolve()
+    println("... done")
+
+    println("2nd update ...")
+    Pkg.update()
+    println("... done")
+
+    println("gc ...")
     Pkg.gc()
+    println("... done")
 end
 
 ############################################################
