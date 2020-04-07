@@ -8,8 +8,12 @@ using InteractiveUtils
 ## notebooks ###############################################
 export hm_update_Julia
 function hm_update_Julia()
-    println("1st resolve ...")
 
+    println("registry update ...")
+    Pkg.Registry.update()
+    println("... done")
+
+    println("1st resolve ...")
     try
         Pkg.resolve()
     catch
