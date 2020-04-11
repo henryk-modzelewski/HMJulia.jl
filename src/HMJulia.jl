@@ -52,7 +52,7 @@ function notebooks_HM(subdir::String...)
 end
 
 export notebooks_here
-notebooks_here() = notebook(dir=pwd)
+notebooks_here() = notebook(dir=pwd())
 
 export notebooks_softmeet
 notebooks_softmeet() = notebook(dir=notebook_dir_sm)
