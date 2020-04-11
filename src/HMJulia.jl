@@ -40,17 +40,22 @@ end
 
 ############################################################
 ## notebooks ###############################################
-export notebooks_hm
-notebooks_hm = joinpath(ENV["HOME"],"Projects/Julia/Notebooks")
-notebooks_HM() = notebook(dir=joinpath(notebooks))
-function notebooks_HM(subdir::String)
-    newpath = joinpath(notebooks,subdir)
-    isdir(newpath) || mkdir(newpath)
+notebook_dir_hm = joinpath(ENV["HOME"],"Projects/Julia/Notebooks")
+notebook_dir_sm = joinpath(ENV["HOME"],"Projects/Julia/SLIM/Software-meeting/Julia-tutorials")
+
+export notebooks_HM
+notebooks_HM() = notebook(dir=joinpath(notebook_dir_hm))
+function notebooks_HM(subdir::String...)
+    newpath = joinpath(notebook_dir_hm,subdir...)
+    isdir(newpath) || mkpath(newpath)
     notebook(dir=newpath)
 end
+
+export notebooks_here
+notebooks_here() = notebook(dir=pwd)
+
 export notebooks_softmeet
-notebooks_sm = joinpath(ENV["HOME"],"Projects/Julia/SLIM/Software-meeting/Julia-tutorials")
-notebooks_softmeet() = notebook(dir=notebooks_sm)
+notebooks_softmeet() = notebook(dir=notebook_dir_sm)
 
 ############################################################
 ## type tree ###############################################
