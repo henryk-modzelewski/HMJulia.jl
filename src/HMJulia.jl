@@ -3,6 +3,7 @@ module HMJulia
 using Pkg
 using IJulia
 using InteractiveUtils
+using Random
 
 ############################################################
 ## notebooks ###############################################
@@ -69,6 +70,20 @@ function hm_type_tree(top::Type=Number;bl::String="* ",in::String="  ",super::Bo
             hm_type_tree(T;bl=in*bl,in=in,super=false)
         end
     end
+end
+
+
+export hm_time_diff
+"""
+    hm_time_diff(hs,ms,he,me)
+"""
+function hm_time_diff(hs,ms,he,me)
+    te = he*60+me
+    ts = hs*60+ms
+    tm = te-ts
+    ts = tm*60
+    tr = ts+rand(-29:30)
+    return tm,ts,tr
 end
 
 end # module
