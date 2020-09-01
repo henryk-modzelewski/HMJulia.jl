@@ -76,14 +76,25 @@ end
 export hm_time_diff
 """
     hm_time_diff(hs,ms,he,me)
+    hm_time_diff("hs,ms,he,me")
 """
-function hm_time_diff(hs,ms,he,me)
+function hm_time_diff(hs::Integer,ms::Integer,he::Integer,me::Integer)
     te = he*60+me
     ts = hs*60+ms
     tm = te-ts
     ts = tm*60
     tr = ts+rand(-29:30)
     return tm,ts,tr
+end
+function hm_time_diff(in::String)
+    dummy = split(in,',')
+    ts = split(dummy[1],':')
+    te = split(dummy[2],':')
+    hs = parse(Int,ts[1])
+    ms = parse(Int,ts[2])
+    he = parse(Int,te[1])
+    me = parse(Int,te[2])
+    return hm_time_diff(hs,ms,he,me)
 end
 
 end # module
