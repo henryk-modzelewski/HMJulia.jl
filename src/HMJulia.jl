@@ -49,14 +49,14 @@ notebooks_HM() = notebook(dir=joinpath(notebook_dir_hm))
 function notebooks_HM(subdir::String...)
     newpath = joinpath(notebook_dir_hm,subdir...)
     isdir(newpath) || mkpath(newpath)
-    notebook(dir=newpath)
+    @async notebook(dir=newpath)
 end
 
 export notebooks_here
-notebooks_here() = notebook(dir=pwd())
+notebooks_here() = @async notebook(dir=pwd())
 
 export notebooks_softmeet
-notebooks_softmeet() = notebook(dir=notebook_dir_sm)
+notebooks_softmeet() = @async notebook(dir=notebook_dir_sm)
 
 ############################################################
 ## type tree ###############################################
@@ -76,7 +76,7 @@ end
 export hm_time_diff
 """
     hm_time_diff(hs,ms,he,me)
-    hm_time_diff("hs,ms,he,me")
+    hm_time_diff("hs:ms,he:me")
 """
 function hm_time_diff(hs::Integer,ms::Integer,he::Integer,me::Integer)
     te = he*60+me
